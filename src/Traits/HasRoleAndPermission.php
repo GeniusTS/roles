@@ -193,7 +193,7 @@ trait HasRoleAndPermission
         ])
             ->join('permission_role', 'permission_role.permission_id', '=', 'permissions.id')
             ->join('roles', 'roles.id', '=', 'permission_role.role_id')
-            ->whereIn('roles.id', $this->getRoles()->lists('id')->toArray())
+            ->whereIn('roles.id', $this->getRoles()->pluck('id')->toArray())
             ->orWhere('roles.level', '<', $this->level())
             ->groupBy(['permissions.id', 'pivot_created_at', 'pivot_updated_at']);
     }
