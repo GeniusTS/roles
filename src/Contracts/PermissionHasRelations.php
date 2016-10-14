@@ -19,4 +19,11 @@ interface PermissionHasRelations
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function users();
+
+    /**
+     * Permission belongs to many permissions.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function prePermissions();
 }
