@@ -18,6 +18,8 @@ class CreatePermissionsTable extends Migration
             $table->string('slug')->unique();
             $table->string('description')->nullable();
             $table->string('model')->nullable();
+            $table->string('module')->default('')->comment('权限所属模块');
+            $table->string('position')->default('module')->comment('权限用于位置,module, function');
             $table->timestamps();
         });
     }
