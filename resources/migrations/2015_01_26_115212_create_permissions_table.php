@@ -18,6 +18,8 @@ class CreatePermissionsTable extends Migration
             $table->string('slug')->unique();
             $table->string('description')->nullable();
             $table->string('model')->nullable();
+            $table->string('position')->default('module')->nullable();
+            $table->tinyInteger('status')->default(1)->comment('状态');
             $table->timestamps();
         });
     }
