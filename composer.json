@@ -1,12 +1,12 @@
 {
-    "name": "geniusts/roles",
+    "name": "hskyzhou/roles",
     "description": "Powerful package for handling roles and permissions in Laravel 5.3",
     "keywords": ["roles", "permissions", "acl", "auth", "laravel", "illuminate"],
     "license": "MIT",
     "authors": [
         {
-            "name": "AbdulKader Zein Eddin",
-            "email": "aboudeh1987@gmail.com"
+            "name": "hsky zhou",
+            "email": "xezw211@gmail.com"
         }
     ],
     "require": {
@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "GeniusTS\\Roles\\": "src/"
+            "HskyZhou\\Roles\\": "src/"
         }
     }
 }
