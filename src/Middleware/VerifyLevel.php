@@ -1,11 +1,11 @@
 <?php
 
-namespace GeniusTS\Roles\Middleware;
+namespace HskyZhou\Roles\Middleware;
 
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
-use GeniusTS\Roles\Exceptions\LevelDeniedException;
+use HskyZhou\Roles\Exceptions\LevelDeniedException;
 
 class VerifyLevel
 {
@@ -35,7 +35,7 @@ class VerifyLevel
      * @param int                      $level
      *
      * @return mixed
-     * @throws \GeniusTS\Roles\Exceptions\LevelDeniedException
+     * @throws \HskyZhou\Roles\Exceptions\LevelDeniedException
      */
     public function handle($request, Closure $next, $level)
     {

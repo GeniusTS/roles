@@ -1,6 +1,6 @@
 <?php
 
-namespace GeniusTS\Roles\Traits;
+namespace HskyZhou\Roles\Traits;
 
 
 use Illuminate\Support\Str;
@@ -120,7 +120,7 @@ trait HasRoleAndPermission
     /**
      * Attach role to a user.
      *
-     * @param int|\GeniusTS\Roles\Models\Role $role
+     * @param int|\HskyZhou\Roles\Models\Role $role
      *
      * @return null|bool
      */
@@ -139,7 +139,7 @@ trait HasRoleAndPermission
     /**
      * Detach role from a user.
      *
-     * @param int|\GeniusTS\Roles\Models\Role $role
+     * @param int|\HskyZhou\Roles\Models\Role $role
      *
      * @return int
      */
@@ -354,7 +354,7 @@ trait HasRoleAndPermission
     /**
      * Attach permission to a user.
      *
-     * @param int|\GeniusTS\Roles\Models\Permission $permission
+     * @param int|\HskyZhou\Roles\Models\Permission $permission
      *
      * @return null|bool
      */
@@ -373,7 +373,7 @@ trait HasRoleAndPermission
     /**
      * Detach permission from a user.
      *
-     * @param int|\GeniusTS\Roles\Models\Permission $permission
+     * @param int|\HskyZhou\Roles\Models\Permission $permission
      *
      * @return int
      */

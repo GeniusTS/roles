@@ -1,6 +1,6 @@
 <?php
 
-namespace GeniusTS\Roles\Traits;
+namespace HskyZhou\Roles\Traits;
 
 
 trait PermissionHasRelations

@@ -1,6 +1,6 @@
 <?php
 
-namespace GeniusTS\Roles\Contracts;
+namespace HskyZhou\Roles\Contracts;
 
 
 interface RoleHasRelations

@@ -1,11 +1,11 @@
 <?php
 
-namespace GeniusTS\Roles\Middleware;
+namespace HskyZhou\Roles\Middleware;
 
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
-use GeniusTS\Roles\Exceptions\PermissionDeniedException;
+use HskyZhou\Roles\Exceptions\PermissionDeniedException;
 
 class VerifyPermission
 {
@@ -35,7 +35,7 @@ class VerifyPermission
      * @param int|string               $permission
      *
      * @return mixed
-     * @throws \GeniusTS\Roles\Exceptions\PermissionDeniedException
+     * @throws \HskyZhou\Roles\Exceptions\PermissionDeniedException
      */
     public function handle($request, Closure $next, $permission)
     {

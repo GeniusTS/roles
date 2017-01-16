@@ -1,6 +1,6 @@
 <?php
 
-namespace GeniusTS\Roles\Exceptions;
+namespace HskyZhou\Roles\Exceptions;
 
 
 class PermissionDeniedException extends AccessDeniedException

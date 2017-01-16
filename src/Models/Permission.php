@@ -1,12 +1,12 @@
 <?php
 
-namespace GeniusTS\Roles\Models;
+namespace HskyZhou\Roles\Models;
 
 
-use GeniusTS\Roles\Traits\Slugable;
+use HskyZhou\Roles\Traits\Slugable;
 use Illuminate\Database\Eloquent\Model;
-use GeniusTS\Roles\Traits\PermissionHasRelations;
-use GeniusTS\Roles\Contracts\PermissionHasRelations as PermissionHasRelationsContract;
+use HskyZhou\Roles\Traits\PermissionHasRelations;
+use HskyZhou\Roles\Contracts\PermissionHasRelations as PermissionHasRelationsContract;
 
 class Permission extends Model implements PermissionHasRelationsContract
 {

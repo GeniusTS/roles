@@ -1,6 +1,6 @@
 <?php
 
-namespace GeniusTS\Roles\Traits;
+namespace HskyZhou\Roles\Traits;
 
 
 trait RoleHasRelations
@@ -29,7 +29,7 @@ trait RoleHasRelations
     /**
      * Attach permission to a role.
      *
-     * @param int|\GeniusTS\Roles\Models\Permission $permission
+     * @param int|\HskyZhou\Roles\Models\Permission $permission
      *
      * @return int|bool
      */
@@ -41,7 +41,7 @@ trait RoleHasRelations
     /**
      * Detach permission from a role.
      *
-     * @param int|\GeniusTS\Roles\Models\Permission $permission
+     * @param int|\HskyZhou\Roles\Models\Permission $permission
      *
      * @return int
      */

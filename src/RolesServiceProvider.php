@@ -1,6 +1,6 @@
 <?php
 
-namespace GeniusTS\Roles;
+namespace HskyZhou\Roles;
 
 
 use Illuminate\Support\ServiceProvider;
