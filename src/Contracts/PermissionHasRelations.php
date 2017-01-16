@@ -1,6 +1,6 @@
 <?php
 
-namespace GeniusTS\Roles\Contracts;
+namespace HskyZhou\Roles\Contracts;
 
 
 interface PermissionHasRelations
@@ -19,4 +19,11 @@ interface PermissionHasRelations
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function users();
+
+    /**
+     * Permission belongs to many permissions.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function prePermissions();
 }

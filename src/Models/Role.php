@@ -1,12 +1,12 @@
 <?php
 
-namespace GeniusTS\Roles\Models;
+namespace HskyZhou\Roles\Models;
 
 
-use GeniusTS\Roles\Traits\Slugable;
+use HskyZhou\Roles\Traits\Slugable;
 use Illuminate\Database\Eloquent\Model;
-use GeniusTS\Roles\Traits\RoleHasRelations;
-use GeniusTS\Roles\Contracts\RoleHasRelations as RoleHasRelationsContract;
+use HskyZhou\Roles\Traits\RoleHasRelations;
+use HskyZhou\Roles\Contracts\RoleHasRelations as RoleHasRelationsContract;
 
 class Role extends Model implements RoleHasRelationsContract
 {

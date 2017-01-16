@@ -1,6 +1,6 @@
 <?php
 
-namespace GeniusTS\Roles\Contracts;
+namespace HskyZhou\Roles\Contracts;
 
 
 interface RoleHasRelations
@@ -23,7 +23,7 @@ interface RoleHasRelations
     /**
      * Attach permission to a role.
      *
-     * @param int|\GeniusTS\Roles\Models\Permission $permission
+     * @param int|\HskyZhou\Roles\Models\Permission $permission
      *
      * @return int|bool
      */
@@ -32,7 +32,7 @@ interface RoleHasRelations
     /**
      * Detach permission from a role.
      *
-     * @param int|\GeniusTS\Roles\Models\Permission $permission
+     * @param int|\HskyZhou\Roles\Models\Permission $permission
      *
      * @return int
      */

@@ -38,7 +38,7 @@ Pull this package in through Composer (file `composer.json`).
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "~5.3.0",
-        "geniusts/roles": "^3.0.2"
+        "hskyzhou/roles": "^3.0.2"
     }
 }
 ```
@@ -68,7 +68,7 @@ Add the package to your application service providers in `config/app.php` file.
     /**
      * Third Party Service Providers...
      */
-    GeniusTS\Roles\RolesServiceProvider::class,
+    HskyZhou\Roles\RolesServiceProvider::class,
 
 ],
 ```
@@ -77,8 +77,8 @@ Add the package to your application service providers in `config/app.php` file.
 
 Publish the package config file and migrations to your application. Run these commands inside your terminal.
 
-    php artisan vendor:publish --provider="GeniusTS\Roles\RolesServiceProvider" --tag=config
-    php artisan vendor:publish --provider="GeniusTS\Roles\RolesServiceProvider" --tag=migrations
+    php artisan vendor:publish --provider="HskyZhou\Roles\RolesServiceProvider" --tag=config
+    php artisan vendor:publish --provider="HskyZhou\Roles\RolesServiceProvider" --tag=migrations
 
 And also run migrations.
 
@@ -95,8 +95,8 @@ And also run migrations.
 Include `HasRoleAndPermission` trait and also implement `HasRoleAndPermission` contract inside your `User` model.
 
 ```php
-use GeniusTS\Roles\Traits\HasRoleAndPermission;
-use GeniusTS\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
+use HskyZhou\Roles\Traits\HasRoleAndPermission;
+use HskyZhou\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract, HasRoleAndPermissionContract
 {
@@ -110,7 +110,7 @@ And that's it!
 ### Creating Roles
 
 ```php
-use GeniusTS\Roles\Models\Role;
+use HskyZhou\Roles\Models\Role;
 
 $adminRole = Role::create([
     'name' => 'Admin',
@@ -205,7 +205,7 @@ if ($user->level() > 4) {
 It's very simple thanks to `Permission` model.
 
 ```php
-use GeniusTS\Roles\Models\Permission;
+use HskyZhou\Roles\Models\Permission;
 
 $createUsersPermission = Permission::create([
     'name' => 'Create users',
@@ -225,7 +225,7 @@ You can attach permissions to a role or directly to a specific user (and of cour
 
 ```php
 use App\User;
-use GeniusTS\Roles\Models\Role;
+use HskyZhou\Roles\Models\Role;
 
 $role = Role::find($roleId);
 $role->attachPermission($createUsersPermission); // permission attached to a role
@@ -272,7 +272,7 @@ Let's say you have an article and you want to edit it. This article belongs to a
 
 ```php
 use App\Article;
-use GeniusTS\Roles\Models\Permission;
+use HskyZhou\Roles\Models\Permission;
 
 $editArticlesPermission = Permission::create([
     'name' => 'Edit articles',
@@ -339,9 +339,9 @@ protected $routeMiddleware = [
     'auth' => \App\Http\Middleware\Authenticate::class,
     'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
     'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-    'role' => \GeniusTS\Roles\Middleware\VerifyRole::class,
-    'permission' => \GeniusTS\Roles\Middleware\VerifyPermission::class,
-    'level' => \GeniusTS\Roles\Middleware\VerifyLevel::class,
+    'role' => \HskyZhou\Roles\Middleware\VerifyRole::class,
+    'permission' => \HskyZhou\Roles\Middleware\VerifyPermission::class,
+    'level' => \HskyZhou\Roles\Middleware\VerifyLevel::class,
 ];
 ```
 
@@ -367,7 +367,7 @@ $router->get('/example', [
 ]);
 ```
 
-It throws `\GeniusTS\Roles\Exceptions\RoleDeniedException`, `\GeniusTS\Roles\Exceptions\PermissionDeniedException` or `\GeniusTS\Roles\Exceptions\LevelDeniedException` exceptions if it goes wrong.
+It throws `\HskyZhou\Roles\Exceptions\RoleDeniedException`, `\HskyZhou\Roles\Exceptions\PermissionDeniedException` or `\HskyZhou\Roles\Exceptions\LevelDeniedException` exceptions if it goes wrong.
 
 You can catch these exceptions inside `app/Exceptions/Handler.php` file and do whatever you want.
 
@@ -381,7 +381,7 @@ You can catch these exceptions inside `app/Exceptions/Handler.php` file and do w
  */
 public function render($request, Exception $e)
 {
-    if ($e instanceof \GeniusTS\Roles\Exceptions\RoleDeniedException) {
+    if ($e instanceof \HskyZhou\Roles\Exceptions\RoleDeniedException) {
         // you can for example flash message, redirect...
         return redirect()->back();
     }

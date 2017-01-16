@@ -1,6 +1,6 @@
 <?php
 
-namespace GeniusTS\Roles\Traits;
+namespace HskyZhou\Roles\Traits;
 
 
 trait PermissionHasRelations
@@ -24,5 +24,15 @@ trait PermissionHasRelations
     public function users()
     {
         return $this->belongsToMany(config('auth.providers.users.model'))->withTimestamps();
+    }
+
+    /**
+     * Permission belongs to many permissions.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function prePermissions()
+    {
+        return $this->belongsToMany(config('roles.models.permission'), 'pre_permissions', 'permission_id', 'pre_permission_id')->withTimestamps();
     }
 }
