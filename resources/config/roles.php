@@ -34,14 +34,14 @@ return [
     |--------------------------------------------------------------------------
     |
     | If you want, you can replace default models from this package by models
-    | you created. Have a look at `GeniusTS\Roles\Models\Role` model and
-    | `GeniusTS\Roles\Models\Permission` model.
+    | you created. Have a look at `HskyZhou\Roles\Models\Role` model and
+    | `HskyZhou\Roles\Models\Permission` model.
     |
     */
 
     'models' => [
-        'role'       => GeniusTS\Roles\Models\Role::class,
-        'permission' => GeniusTS\Roles\Models\Permission::class,
+        'role'       => HskyZhou\Roles\Models\Role::class,
+        'permission' => HskyZhou\Roles\Models\Permission::class,
     ],
 
     /*
