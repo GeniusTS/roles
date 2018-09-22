@@ -17,5 +17,15 @@
         "psr-4": {
             "GeniusTS\\Roles\\": "src/"
         }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "GeniusTS\\Roles\\RolesServiceProvider"
+            ]
+        }
     }
 }
