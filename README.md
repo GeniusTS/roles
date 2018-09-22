@@ -1,7 +1,7 @@
-# Roles And Permissions For Laravel 5.3
+# Roles And Permissions For Laravel 5.X
 
 It is a fork from [bican/roles](https://github.com/romanbican/roles) package,  
-I made some changes to make it work with laravel 5.3
+I made some changes to make it work with laravel 5.3 and greater.
 
 
 - [Installation](#installation)
@@ -72,6 +72,10 @@ Add the package to your application service providers in `config/app.php` file.
 
 ],
 ```
+
+
+**Note:** If you are using Laravel 5.5 or greater and the auto-discover is enabled,
+no need to add the service provider to your settings.
 
 ### Config File And Migrations
 
