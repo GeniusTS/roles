@@ -3,9 +3,9 @@
 namespace GeniusTS\Roles\Exceptions;
 
 
-use Exception;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
-class AccessDeniedException extends Exception
+class AccessDeniedException extends AccessDeniedHttpException
 {
 
     //
