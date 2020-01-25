@@ -65,13 +65,13 @@ trait HasRoleAndPermission
     /**
      * Check if the user has at least one role.
      *
-     * @param int|string|array $role
+     * @param int|string|array $roles
      *
      * @return bool
      */
-    public function isOne($role)
+    public function isOne($roles)
     {
-        foreach ($this->getArrayFrom($role) as $role)
+        foreach ($this->getArrayFrom($roles) as $role)
         {
             if ($this->hasRole($role))
             {
@@ -85,13 +85,13 @@ trait HasRoleAndPermission
     /**
      * Check if the user has all roles.
      *
-     * @param int|string|array $role
+     * @param int|string|array $roles
      *
      * @return bool
      */
-    public function isAll($role)
+    public function isAll($roles)
     {
-        foreach ($this->getArrayFrom($role) as $role)
+        foreach ($this->getArrayFrom($roles) as $role)
         {
             if (! $this->hasRole($role))
             {
@@ -250,13 +250,13 @@ trait HasRoleAndPermission
     /**
      * Check if the user has at least one permission.
      *
-     * @param int|string|array $permission
+     * @param int|string|array $permissions
      *
      * @return bool
      */
-    public function canOne($permission)
+    public function canOne($permissions)
     {
-        foreach ($this->getArrayFrom($permission) as $permission)
+        foreach ($this->getArrayFrom($permissions) as $permission)
         {
             if ($this->hasPermission($permission))
             {
@@ -270,13 +270,13 @@ trait HasRoleAndPermission
     /**
      * Check if the user has all permissions.
      *
-     * @param int|string|array $permission
+     * @param int|string|array $permissions
      *
      * @return bool
      */
-    public function canAll($permission)
+    public function canAll($permissions)
     {
-        foreach ($this->getArrayFrom($permission) as $permission)
+        foreach ($this->getArrayFrom($permissions) as $permission)
         {
             if (! $this->hasPermission($permission))
             {
