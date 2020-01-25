@@ -4,8 +4,8 @@ namespace GeniusTS\Roles\Traits;
 
 
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;
+use Illuminate\Database\Eloquent\Model;
 
 trait HasRoleAndPermission
 {
@@ -41,7 +41,7 @@ trait HasRoleAndPermission
      */
     public function getRoles()
     {
-        return (!$this->roles) ? $this->roles = $this->roles()->get() : $this->roles;
+        return (! $this->roles) ? $this->roles = $this->roles()->get() : $this->roles;
     }
 
     /**
@@ -93,7 +93,7 @@ trait HasRoleAndPermission
     {
         foreach ($this->getArrayFrom($role) as $role)
         {
-            if (!$this->hasRole($role))
+            if (! $this->hasRole($role))
             {
                 return false;
             }
@@ -111,8 +111,7 @@ trait HasRoleAndPermission
      */
     public function hasRole($role)
     {
-        return $this->getRoles()->contains(function ($model, $key) use ($role)
-        {
+        return $this->getRoles()->contains(function ($model, $key) use ($role) {
             return $role == $model->id || Str::is($role, $model->slug);
         });
     }
@@ -126,7 +125,7 @@ trait HasRoleAndPermission
      */
     public function attachRole($role)
     {
-        if (!$this->getRoles()->contains($role))
+        if (! $this->getRoles()->contains($role))
         {
             $this->roles()->attach($role);
 
@@ -181,7 +180,7 @@ trait HasRoleAndPermission
     {
         $permissionModel = app(config('roles.models.permission'));
 
-        if (!$permissionModel instanceof Model)
+        if (! $permissionModel instanceof Model)
         {
             throw new InvalidArgumentException('[roles.models.permission] must be an instance of \Illuminate\Database\Eloquent\Model');
         }
@@ -225,7 +224,7 @@ trait HasRoleAndPermission
      */
     public function getPermissions()
     {
-        return (!$this->permissions) ? $this->permissions = $this->rolePermissions()
+        return (! $this->permissions) ? $this->permissions = $this->rolePermissions()
             ->get()
             ->merge($this->userPermissions()->get()) : $this->permissions;
     }
@@ -279,7 +278,7 @@ trait HasRoleAndPermission
     {
         foreach ($this->getArrayFrom($permission) as $permission)
         {
-            if (!$this->hasPermission($permission))
+            if (! $this->hasPermission($permission))
             {
                 return false;
             }
@@ -297,8 +296,7 @@ trait HasRoleAndPermission
      */
     public function hasPermission($permission)
     {
-        return $this->getPermissions()->contains(function ($model, $key) use ($permission)
-        {
+        return $this->getPermissions()->contains(function ($model, $key) use ($permission) {
             return $permission == $model->id || Str::is($permission, $model->slug);
         });
     }
@@ -360,7 +358,7 @@ trait HasRoleAndPermission
      */
     public function attachPermission($permission)
     {
-        if (!$this->getPermissions()->contains($permission))
+        if (! $this->getPermissions()->contains($permission))
         {
             $this->userPermissions()->attach($permission);
 
@@ -440,7 +438,7 @@ trait HasRoleAndPermission
      */
     private function getArrayFrom($argument)
     {
-        return (!is_array($argument)) ? preg_split('/ ?[,|] ?/', $argument) : $argument;
+        return ! is_array($argument) ? preg_split('/ ?[,|] ?/', $argument) : $argument;
     }
 
     /**
@@ -453,20 +451,24 @@ trait HasRoleAndPermission
      */
     public function __call($method, $parameters)
     {
-        if (starts_with($method, 'is') && $method !== 'is')
+        if ($method !== 'is' && Str::startsWith($method, 'is'))
         {
-            return $this->isRole(snake_case(substr($method, 2), config('roles.separator')));
+            return $this->isRole(Str::snake(substr($method, 2), config('roles.separator')));
         }
-        elseif (starts_with($method, 'can'))
+
+        if (Str::startsWith($method, 'can'))
         {
-            return $this->can(snake_case(substr($method, 3), config('roles.separator')));
+            return $this->can(Str::snake(substr($method, 3), config('roles.separator')));
         }
-        elseif (starts_with($method, 'allowed'))
+
+        if (Str::startsWith($method, 'allowed'))
         {
-            return $this->allowed(snake_case(substr($method, 7), config('roles.separator')),
+            return $this->allowed(
+                Str::snake(substr($method, 7), config('roles.separator')),
                 $parameters[0],
-                (isset($parameters[1])) ? $parameters[1] : true,
-                (isset($parameters[2])) ? $parameters[2] : 'user_id');
+                $parameters[1] ?? true,
+                $parameters[2] ?? 'user_id'
+            );
         }
 
         return parent::__call($method, $parameters);
