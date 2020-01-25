@@ -1,6 +1,6 @@
 {
     "name": "geniusts/roles",
-    "description": "Powerful package for handling roles and permissions in Laravel 5.3",
+    "description": "Powerful package for handling roles and permissions in Laravel 6",
     "keywords": ["roles", "permissions", "acl", "auth", "laravel", "illuminate"],
     "license": "MIT",
     "authors": [
