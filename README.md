@@ -1,8 +1,6 @@
-# Roles And Permissions For Laravel 5.X
+# Roles And Permissions For Laravel 6
 
-It is a fork from [bican/roles](https://github.com/romanbican/roles) package,  
-I made some changes to make it work with laravel 5.3 and greater.
-
+This package is forked from [bican/roles](https://github.com/romanbican/roles) package.
 
 - [Installation](#installation)
     - [Composer](#composer)
@@ -36,61 +34,29 @@ Pull this package in through Composer (file `composer.json`).
 ```js
 {
     "require": {
-        "php": ">=5.5.9",
-        "laravel/framework": "~5.3.0",
-        "geniusts/roles": "^3.0.2"
+        "geniusts/roles": "^4.0"
     }
 }
 ```
 
 > If you are still using Laravel 5.0, you must pull in version `1.7.*`.
-
 > and for Laravel 5.2, you must pull in version `2.1.*`.
+> and for Laravel 5.3 and greater, you must pull in version `3.*`.
 
 Run this command inside your terminal.
 
     composer update
 
-### Service Provider
-
-Add the package to your application service providers in `config/app.php` file.
-
-```php
-'providers' => [
-    
-    /*
-     * Laravel Framework Service Providers...
-     */
-    Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
-    Illuminate\Auth\AuthServiceProvider::class,
-    ...
-    
-    /**
-     * Third Party Service Providers...
-     */
-    GeniusTS\Roles\RolesServiceProvider::class,
-
-],
-```
-
-
-**Note:** If you are using Laravel 5.5 or greater and the auto-discover is enabled,
-no need to add the service provider to your settings.
-
 ### Config File And Migrations
 
-Publish the package config file and migrations to your application. Run these commands inside your terminal.
-
-    php artisan vendor:publish --provider="GeniusTS\Roles\RolesServiceProvider" --tag=config
-    php artisan vendor:publish --provider="GeniusTS\Roles\RolesServiceProvider" --tag=migrations
-
-And also run migrations.
+Run `migrate` command to update your database.
 
     php artisan migrate
 
-> The migrations publishing only for earlier than laravel 5.3,  
-> for laravel 5.3 you must only run the Artisan `migrate` command
+If you want to publish the package config file and migrations to your application. Run these commands inside your terminal.
 
+    php artisan vendor:publish --provider="GeniusTS\Roles\RolesServiceProvider" --tag=config
+    php artisan vendor:publish --provider="GeniusTS\Roles\RolesServiceProvider" --tag=migrations
 
 > This uses the default users table which is in Laravel. You should already have the migration file for the users table available and migrated.
 
@@ -99,12 +65,14 @@ And also run migrations.
 Include `HasRoleAndPermission` trait and also implement `HasRoleAndPermission` contract inside your `User` model.
 
 ```php
+use Illuminate\Notifications\Notifiable;
 use GeniusTS\Roles\Traits\HasRoleAndPermission;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use GeniusTS\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract, HasRoleAndPermissionContract
+class User Authenticatable implements HasRoleAndPermissionContract
 {
-    use Authenticatable, CanResetPassword, HasRoleAndPermission;
+    use Notifiable, HasRoleAndPermission;
 ```
 
 And that's it!
@@ -193,7 +161,7 @@ if ($user->isRole('admin|moderator', true)) {
 ### Levels
 
 When you are creating roles, there is optional parameter `level`. It is set to `1` by default, but you can overwrite it and then you can do something like this:
- 
+
 ```php
 if ($user->level() > 4) {
     //
