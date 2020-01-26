@@ -4,7 +4,6 @@ This package is forked from [bican/roles](https://github.com/romanbican/roles) p
 
 - [Installation](#installation)
     - [Composer](#composer)
-    - [Service Provider](#service-provider)
     - [Config File And Migrations](#config-file-and-migrations)
     - [HasRoleAndPermission Trait And Contract](#hasroleandpermission-trait-and-contract)
 - [Usage](#usage)
