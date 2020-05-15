@@ -1,4 +1,4 @@
-# Roles And Permissions For Laravel 6
+# Roles And Permissions For Laravel 6 and 7
 
 This package is forked from [bican/roles](https://github.com/romanbican/roles) package.
 
